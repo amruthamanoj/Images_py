@@ -1,0 +1,33 @@
+import imageio
+import matplotlib.pyplot as plt
+import warnings
+import matplotlib.cbook
+warnings.filterwarnings("ignore",category=matplotlib.cbook.mplDeprecation)
+
+import os
+path = " Users/Folder "  # set path to folder here
+os.chdir(path)
+
+pic=imageio.imread('filename.jpg') #open file
+
+plt.figure(figsize=(6,6))
+plt.imshow(pic);
+plt.axis('off');
+
+n =255- pic #transforming to negative of image
+plt.figure(figsize= (6,6))
+plt.imshow(n);
+plt.axis('off');
+
+#run the image again
+
+pic=imageio.imread('filename.jpg') # Gamma encoding 
+gamma=2.2 
+#Gamma < 1 ~ Dark ; 
+#Gamma > 1 ~ Bright
+gamma_correction=((pic/255)**(1/gamma))
+plt.figure(figsize=(5,5))
+plt.imshow(gamma_correction)
+plt.axis('off');
+
+
